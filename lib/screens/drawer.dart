@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterprueba/screens/recycle_bin.dart';
-import 'package:flutterprueba/screens/tabs.screen.dart';
+import 'package:go_router/go_router.dart';
 
 import '../blocs/bloc.exports.dart';
 
@@ -25,9 +24,7 @@ class MyDrawer extends StatelessWidget {
             BlocBuilder<TasksBlocBloc, TasksBlocState>(
               builder: (context, state) {
                 return GestureDetector(
-                  onTap: () => Navigator.of(context).pushReplacementNamed(
-                    TabsScreen.id,
-                  ),
+                  onTap: () => context.go('/tabs'),
                   child: ListTile(
                     leading: const Icon(Icons.folder_special),
                     title: const Text("My Tasks"),
@@ -41,13 +38,22 @@ class MyDrawer extends StatelessWidget {
             BlocBuilder<TasksBlocBloc, TasksBlocState>(
                 builder: (context, state) {
               return GestureDetector(
-                onTap: () => Navigator.of(context).pushReplacementNamed(
-                  RecycleBin.id,
-                ),
+                onTap: () => context.go('/reciclebin'),
                 child: ListTile(
                   leading: const Icon(Icons.delete),
                   title: const Text("Historial"),
                   trailing: Text('${state.removedTasks.length}'),
+                ),
+              );
+            }),
+            const Divider(),
+            BlocBuilder<TasksBlocBloc, TasksBlocState>(
+                builder: (context, state) {
+              return GestureDetector(
+                onTap: () => context.go('/rickAndMorty'),
+                child: const ListTile(
+                  leading: Icon(Icons.manage_search),
+                  title: Text("Rick and Morty APP"),
                 ),
               );
             }),

@@ -65,7 +65,7 @@ class PopUpMenu extends StatelessWidget {
                   onTap: cancelOrDeleteCallback,
                   child: TextButton.icon(
                     onPressed: null,
-                    icon: const Icon(Icons.delete_forever),
+                    icon: const Icon(Icons.delete_forever), 
                     label: const Text('Borrar definitivamente'),
                   ),
                 ),
