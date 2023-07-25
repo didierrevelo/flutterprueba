@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterprueba/providers/api_provider.dart';
+import 'package:flutterprueba/widgets/search_delegate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -46,6 +47,13 @@ class _RickMortyState extends State<RickMorty> {
         title: const Text('Rick And Morty',
             style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: SearchCharacter());
+              })
+        ],
       ),
       drawer: const MyDrawer(),
       body: SizedBox(

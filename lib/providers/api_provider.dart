@@ -17,6 +17,13 @@ class ApiProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<List<Character>> getCharacter(String name) async {
+    final result =
+        await http.get(Uri.https(url, '/api/character/', {'name': name}));
+    final response = characterResponseFromJson(result.body);
+    return response.results!;
+  }
+
   Future<List<EpisodeResponse>> getEpisodes(Character character) async {
     episodes = [];
     for (int i = 0; i < character.episode!.length; i++) {
